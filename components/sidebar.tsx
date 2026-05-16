@@ -25,7 +25,7 @@ const menuItems = [
   { label: "Vehicle List", icon: Car, href: "/dashboard/vehicles" },
   { label: "Driver List", icon: UserCircle, href: "/dashboard/drivers" },
   { label: "Routes", icon: Route, href: "/dashboard/routes" },
-  { label: "Passenger List", icon: Users, href: "/dashboard/passengers" },
+  { label: "Parent List", icon: Users, href: "/dashboard/parents" },
   { label: "Payment History", icon: CreditCard, href: "/dashboard/payments" },
 ];
 
@@ -176,17 +176,18 @@ export function Sidebar() {
         {/* User + Logout */}
         <div className="mt-6 space-y-3">
           <div className="flex items-center gap-3 bg-[#EEF0FF] py-2 px-4 rounded-full justify-center">
-            <div className="w-8 h-8 rounded-full bg-gray-300 overflow-hidden relative">
+            <div className="w-8 h-8 rounded-full bg-linear-to-br from-primary to-secondary overflow-hidden relative flex items-center justify-center shrink-0">
               {avatarSrc ? (
-                <Image
+                <img
                   src={avatarSrc}
                   alt="User"
-                  fill
-                  className="object-cover"
-                  sizes="32px"
+                  className="w-full h-full object-cover"
+                  onError={(e) => { (e.currentTarget as HTMLImageElement).style.display = "none" }}
                 />
               ) : (
-                <div className="w-full h-full" />
+                <span className="text-white font-bold text-xs select-none">
+                  {(user?.name ?? sessionData?.user?.name ?? "A")[0]?.toUpperCase()}
+                </span>
               )}
             </div>
 

@@ -54,7 +54,7 @@ export default function VehiclesPage() {
   const meta = data?.data?.meta || { totalPages: 1 };
 
   return (
-    <div className="space-y-8 md:ml-64">
+    <div className="space-y-8">
       {/* Header Section */}
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
         <div>
